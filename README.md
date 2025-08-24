@@ -9,7 +9,7 @@ Projektet är utvecklat av **Jönköpings OK** och används som en komponent i k
 
 ## Funktioner
 
-- Hämtar tävlingsdata från Eventor via API i endast ett anrop mot Eventor
+- Hämtar tävlingsdata från Eventor via API i endast ett anrop per timma
 - Cachelagring för att minska belastning och öka hastighet
 - Visar kommande och genomförda tävlingar
 - Visar deadlines för anmälan och efteranmälan
