@@ -57,7 +57,7 @@ curl -s https://din-domän.se/eventor_proxy.php?update=1 > /dev/null
 
 1. Redigera hemsidan genom trycka på kugghjulet
 2. Skapa ny komponent under egna komponenter
-3. Kalla den exempelvis Eventor tävlingar, ge den en snygg ikon och lägg in html, javascript och css som fu hittar under /zoezi
+3. Kalla den exempelvis Eventor tävlingar, ge den en snygg ikon och lägg in html, javascript och css som du hittar under /zoezi
 4. Uppdatera Javascriptet så url går till din proxy
 5. Använd din nya komponent på en valfri sida
 
