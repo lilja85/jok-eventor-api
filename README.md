@@ -7,6 +7,8 @@ Detta projekt är ett PHP-baserat API och en Vue-komponent som hämtar och visar
 
 Projektet är utvecklat av **Jönköpings OK** och används som en komponent i klubbens verksamhetssystem **[Zoezi](https://zoezi.se/)**, som bland annat fungerar som CMS.
 
+Exempel på hur det ser ut och fungerar kan du se på [https://www.jonkopingsok.nu](https://www.jonkopingsok.nu)
+
 ## Funktioner
 
 - Hämtar tävlingsdata från Eventor via API i endast ett anrop per timma
