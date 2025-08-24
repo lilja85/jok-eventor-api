@@ -3,27 +3,27 @@ Jönköpings OKs usage of Eventor API - Swedish Orienteering's central IT system
 
 # Tävlingar i Eventor där klubbmedlemmar är anmälda eller har deltagit
 
-Detta projekt är ett PHP-baserat API och en Vue-komponent som hämtar och visar tävlingsdata från Eventor. Syftet är att underlätta för medlemmar att se vilka tävlingar som är andra medlemmar är anmälda till inklusive datum man behöver anmäla sig. Vi listar även tävlingar som passerats för att enkelt kunna hitta resultat och se vilka tävlingar medlemmar deltagit på.
+Detta projekt är ett PHP-baserat API och en Vue-komponent som hämtar och visar tävlingsdata från Eventor. Syftet är att underlätta för medlemmar att se vilka tävlingar som andra medlemmar är anmälda till inklusive datum för ordinarie/efteranmälan anmälningsstopp. Vi listar även tävlingar som passerats för att enkelt kunna hitta resultat och se vilka tävlingar medlemmar deltagit på.
 
 Projektet är utvecklat av **Jönköpings OK** och används som en komponent i klubbens verksamhetssystem **[Zoezi](https://zoezi.se/)**, som bland annat fungerar som CMS.
 
 ## Funktioner
 
-- Hämtar tävlingsdata från Eventor via API i endast ett anrop
+- Hämtar tävlingsdata från Eventor via API i endast ett anrop mot Eventor
+- Cachelagring för att minska belastning och öka hastighet
 - Visar kommande och genomförda tävlingar
 - Visar deadlines för anmälan och efteranmälan
-- Cachelagring för att minska belastning och öka hastighet
-- Cron-jobb för automatisk uppdatering i bakgrunden
+- Automatisk uppdatering i bakgrunden med Cron-jobb
 - Vue-komponent för frontend-visning i [Zoezi](https://zoezi.se/)
 
-## Teknik
+## Teknikska krav
 
-- **Backend**: PHP 7+, Eventor API
-- **Frontend**: Vue 2/3 (kompatibel med Vuetify)
-- **CMS**: Zoezi (via inbäddad komponent)
-- **Cache**: JSON-fil med tidsstyrd uppdatering
+För att kunna köra detta behöver du
+- PHP 7+ server/webbhotell
+- Kunna anropa en sida på schema, exempelvisa via cron-jobs (kanske på ditt webbhotell)
+- Zoezi för frontend där Vue 2/3 (kompatibel med Vuetify) används (för exakt samma, annars fritt fram använda annan frontend)
 
-## Installation proxy-api
+## Installation av proxy-api
 
 Eftersom vi dels inte vill belasta Eventor med ett api-anrop per besökare och dels vill få upp hastigheten behöver vi en proxy som cachar resultatet. Dessutom har Zoezi lagt in begränsningar i CORS som gör att du behöver en egen proxy och kan inte anropa Eventor direkt.
 
