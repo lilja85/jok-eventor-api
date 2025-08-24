@@ -27,22 +27,26 @@ Projektet är utvecklat av **Jönköpings OK** och används som en komponent i k
 
 Eftersom vi dels inte vill belasta Eventor med ett api-anrop per besökare och dels vill få upp hastigheten behöver vi en proxy som cachar resultatet. Dessutom har Zoezi lagt in begränsningar i CORS som gör att du behöver en egen proxy och kan inte anropa Eventor direkt.
 
-1. Hämta API-nyckeln från [https://eventor.orientering.se/OrganisationAdmin/Settings](https://eventor.orientering.se/OrganisationAdmin/Settings)
+1. Hämta API-nyckeln från [https://eventor.orientering.se/OrganisationAdmin/Settings](https://eventor.orientering.se/OrganisationAdmin/Settings). Kolla även Organisation ID på [https://eventor.orientering.se/Organisation/Info](https://eventor.orientering.se/Organisation/Info)
 2. Klona detta repo till din server där du kan köra PHP (eller flytta med fpt):
    ```bash
    git clone [https://github.com/ditt-klubbnamn/eventor-tavlingsvisning.git](https://github.com/lilja85/jok-eventor-api.git)
    ```
 3. Skapa en konfigurationsfil config.php utanför webbroten. Exempelvis i mappen private på samma nivå som public_html:
    ```php
+   <?php
    // config.php
    return [
       'eventor_api_key' => 'DIN_API_NYCKEL_HÄR'
    ];
    ```
-4. Uppdatera eventuellt eventor_proxy.php (om du inte lagt den i private på samma nivå som public_html) så att den läser nyckeln från config.php:
+4. Uppdatera eventor_proxy.php så att följande rader är korrekt för dig:
    ```php
-   $config = require '/sökväg/till/config.php';
-   $apiKey = $config['eventor_api_key'];
+   <?php
+   header("Access-Control-Allow-Origin: https://din-domän.se");
+   $config = require __DIR__ . '/../private/config.php'; // Om du lagt config.php i /private samt att proxy-skriptet ligger direkt i rooten på din sida
+   $apiKey = $config['eventor_api_key']; // Säkert sätt att ladda in nyckeln
+   $organisationId = 000; // Ange din Organisations ID enligt https://eventor.orientering.se/Organisation/Info
    ```
 5. Skapa ett cron-jobb som uppdaterar cachen exempelvis en gång varje timma:
 ```bash

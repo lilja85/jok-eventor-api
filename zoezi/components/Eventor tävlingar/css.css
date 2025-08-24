@@ -1,0 +1,12 @@
+
+            .v-list-item-title {
+                font-weight: bold;
+            }
+            .v-list-item-subtitle a {
+                color: #1976D2;
+                text-decoration: none;
+            }
+            .v-list-item-subtitle a:hover {
+                text-decoration: underline;
+            }
+        

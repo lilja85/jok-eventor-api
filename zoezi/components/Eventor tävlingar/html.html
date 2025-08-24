@@ -1,0 +1,44 @@
+<v-container>
+  <v-row>
+    <!-- Kommande tävlingar -->
+    <v-col cols="12">
+      <h3>Kommande tävlingar</h3>
+      <v-list>
+        <v-list-item v-for="event in upcomingEvents" :key="event.eventId">
+          <v-list-item-content>
+            <a :href="`https://eventor.orientering.se/Events/Show/${event.eventId}`" target="_blank">
+              {{ event.name }}
+            </a>
+            <v-list-item-subtitle>
+              📅 {{ formatDate(event.startDate) }} | 👥 {{ event.participants }} medlemmar<br>
+              <template v-if="showOrdinaryDeadline(event)">
+                🕒 Anmäl senast: {{ formatDateTime(event.ordinaryDeadline) }}<br>
+              </template>
+              <template v-else-if="showLateDeadline(event)">
+                🕒 Efteranmäl senast: {{ formatDateTime(event.lateDeadline) }}<br>
+              </template>
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-col>
+
+    <!-- Avslutade tävlingar -->
+    <v-col cols="12">
+      <h3>Avslutade tävlingar</h3>
+      <v-list>
+        <v-list-item v-for="event in pastWeekEvents" :key="event.eventId">
+          <v-list-item-content>
+            <a :href="`https://eventor.orientering.se/Events/Show/${event.eventId}`" target="_blank">
+              {{ event.name }}
+            </a>
+            <v-list-item-subtitle>
+              📅 {{ formatDate(event.startDate) }} | 👥 {{ event.participants }} medlemmar<br>
+              🔗 <a :href="event.resultUrl" target="_blank">Resultat på Eventor</a>
+            </v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-col>
+  </v-row>
+</v-container>
